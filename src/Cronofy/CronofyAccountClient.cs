@@ -268,13 +268,7 @@ namespace Cronofy
             request.AddOAuthAuthorization(this.accessToken);
             request.SetJsonBody(eventRequest);
 
-            var response = this.HttpClient.GetResponse(request);
-
-            if (response.Code != 202)
-            {
-                // TODO More useful exceptions for validation errors
-                throw new CronofyException("Request failed");
-            }
+            this.HttpClient.GetValidResponse(request);
         }
 
         /// <inheritdoc/>
@@ -292,13 +286,7 @@ namespace Cronofy
             var requestBody = new { event_id = eventId };
             request.SetJsonBody(requestBody);
 
-            var response = this.HttpClient.GetResponse(request);
-
-            if (response.Code != 202)
-            {
-                // TODO More useful exceptions for validation errors
-                throw new CronofyException("Request failed");
-            }
+            this.HttpClient.GetValidResponse(request);
         }
 
         /// <inheritdoc/>
@@ -364,13 +352,7 @@ namespace Cronofy
             request.Url = string.Format(ChannelUrlFormat, channelId);
             request.AddOAuthAuthorization(this.accessToken);
 
-            var response = this.HttpClient.GetResponse(request);
-
-            if (response.Code != 202)
-            {
-                // TODO More useful exceptions for validation errors
-                throw new CronofyException("Request failed");
-            }
+            this.HttpClient.GetValidResponse(request);
         }
 
         /// <summary>
